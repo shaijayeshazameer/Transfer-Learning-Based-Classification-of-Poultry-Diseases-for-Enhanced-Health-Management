@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h1 { color: #333; }
+    .section { margin-bottom: 20px; }
+    .label { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Poultry Disease Report</h1>
+
+  <div class="section">
+    <p class="label">Prediction:</p>
+    <p>{{ prediction }}</p>
+  </div>
+
+  <div class="section">
+    <p class="label">Confidence:</p>
+    <p>{{ confidence }}%</p>
+  </div>
+
+  <div class="section">
+    <p class="label">Uploaded Image:</p>
+    <img src="{{ image_path }}" style="max-width:300px;">
+  </div>
+
+  <div class="section">
+    <p class="label">Date & Time:</p>
+    <p>{{ timestamp }}</p>
+  </div>
+
+  <div class="section">
+    <p class="label">Suggested Treatment:</p>
+    {% if prediction == 'Coccidiosis' %}
+      <p>Use Amprolium or Toltrazuril. Ensure clean water and dry bedding.</p>
+    {% elif prediction == 'Newcastle' %}
+      <p>There is no cure. Vaccinate the flock and isolate infected birds.</p>
+    {% elif prediction == 'Salmonella' %}
+      <p>Use Enrofloxacin. Ensure strict hygiene and prevent rodent contamination.</p>
+    {% else %}
+      <p>No treatment needed. The bird is healthy.</p>
+    {% endif %}
+  </div>
+</body>
+</html>
